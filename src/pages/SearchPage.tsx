@@ -92,32 +92,6 @@ const SearchPage = () => {
        )}
       </div>
     </div>
-    // <div className="pt-16 px-4 mx-auto">
-    //   <div className="lg:hidden my-2 mx-1 sticky top-[70px] z-30">
-    //     <input
-    //       type="text"
-    //       placeholder="Search here..."
-    //       onChange={handleInputChange}
-    //       className='px-4 py-1 text-lg w-full bg-white rounded-full text-neutral-900'
-    //     />
-    //   </div>
-    //   <div className="container mx-auto">
-    //     <h3 className="capitalize text-lg lg:text-xl font-semibold my-3">
-    //       Search Result
-    //     </h3>
-    //     <div className="grid grid-cols-[repeat(auto-fit,230px)] gap-6 justify-center lg:justify-start mx-auto">
-    //       {data.map((searchData, index) => (
-    //         <Card
-    //           data={searchData}
-    //           key={`${searchData.id}-${index}`}
-    //           media_type={searchData.media_type}
-    //           trending={false}
-    //           index={index}
-    //         />
-    //       ))}
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

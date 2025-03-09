@@ -29,9 +29,4 @@ export const mobileNavigation:navigationType[] = [
         icon: <MdHomeFilled />
     },
     ...navigations,
-    // {
-    //     label: "search",
-    //     href: "search",
-    //     icon: <IoSearchOutline />
-    // }
 ]
