@@ -12,7 +12,7 @@ const Header = () => {
   const [searchInput, setSearchInput] = useState(removeSpace || "");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any[]>([])
   const [error, setError] = useState<string | null>(null);
 
   // Update search input when URL changes
@@ -110,6 +110,13 @@ const Header = () => {
 
     {loading && <Loader />}
     {error && <p>{error}</p>}
+    {data.length > 0 && <p className="text-red-500 absolute top-14 left-0 right-0 text-center rounded-lg shadow-lg p-3">
+      {data.map((item, index) => (
+        <div key={index} className="p-2 hover:bg-gray-700 cursor-pointer">
+          {item.title || item.name}
+        </div>
+      ))}
+      </p>}
     </div>
   );
 };
