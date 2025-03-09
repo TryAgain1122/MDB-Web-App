@@ -1,6 +1,5 @@
 import { FaTv } from "react-icons/fa";
 import { BiSolidMoviePlay } from "react-icons/bi";
-import { IoSearchOutline } from "react-icons/io5";
 import { MdHomeFilled } from "react-icons/md";
 
 interface navigationType {

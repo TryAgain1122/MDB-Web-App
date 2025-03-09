@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 
@@ -18,7 +18,7 @@ interface SearchResult {
 const SearchPage = () => {
   const location = useLocation();
   const removeSpace = location?.search?.slice(3)?.split("%20")?.join(" ");
-  const [searchInput, setSearchInput] = useState(removeSpace || "");
+  const [searchInput] = useState(removeSpace || "");
   const navigate = useNavigate();
   const [data, setData] = useState<SearchResult[]>([]);
   const [page, setPage] = useState(1); 
