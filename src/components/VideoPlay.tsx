@@ -1,6 +1,6 @@
 import { IoClose } from "react-icons/io5";
+import { FaFilm } from "react-icons/fa";
 import useFetchDetails from "../hooks/useFetchDetails";
-import Loader from "./Loader";
 
 interface videoResult {
   key: string;
@@ -29,29 +29,44 @@ const VideoPlay = ({ data, close, media_type }: VideoPlayProps) => {
   const videoKey = videoData?.results?.[0]?.key;
 
   return (
-    <div className="fixed bg-neutral-700 top-0 right-0 bottom-0 left-0 z-40 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-black w-full max-h-[80vh] max-w-screen-lg aspect-video rounded relative">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      onClick={close}
+    >
+      <div
+        className="relative w-full max-w-5xl bg-neutral-900 rounded-2xl overflow-hidden shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
         <button
-          className="absolute -right-1 -top-6 text-3xl z-50"
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors"
           onClick={close}
         >
-          <IoClose />
+          <IoClose className="text-2xl" />
         </button>
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            {videoKey ? (
-              <iframe
-                src={`https://www.youtube.com/embed/${videoData?.results[0]?.key}`}
-                className="w-full h-full"
-                title="Video Player"
-              />
-            ) : (
-              <p className="text-white text-center">No Video availabe</p>
-            )}
-          </>
-        )}
+
+        {/* Video Container */}
+        <div className="aspect-video w-full bg-black">
+          {loading ? (
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-10 h-10 border-3 border-white/20 border-t-white rounded-full animate-spin" />
+            </div>
+          ) : videoKey ? (
+            <iframe
+              src={`https://www.youtube.com/embed/${videoKey}?autoplay=1&rel=0`}
+              className="w-full h-full"
+              title="Video Player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center text-neutral-500">
+              <FaFilm className="text-5xl mb-4" />
+              <p className="text-lg font-medium">No video available</p>
+              <p className="text-sm mt-1">Check back later for trailers and clips</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
